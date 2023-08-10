@@ -73,7 +73,7 @@ namespace Box2D
 		[LinkName("b2Body_CreateFixtureWithShapeDensity")] public static extern b2Fixture* CreateFixture(b2Body* body, b2Shape* shape, float density);
 		[LinkName("b2Body_DestroyFixture")] public static extern void DestroyFixture(b2Body* body, b2Fixture* fixture);
 
-		[LinkName("b2Body_SetTransform")] public static extern void SetTransform(b2Body* body, ref b2Vec2 position, float angle);
+		[LinkName("b2Body_SetTransform")] public static extern void SetTransform(b2Body* body, in b2Vec2 position, float angle);
 		[LinkName("b2Body_GetPreviousTransform")] public static extern b2Transform GetPreviousTransform(b2Body* body);
 		[LinkName("b2Body_GetTransform")] public static extern b2Transform GetTransform(b2Body* body);
 
@@ -84,19 +84,19 @@ namespace Box2D
 		[LinkName("b2Body_GetWorldCenter")] public static extern b2Vec2 GetWorldCenter(b2Body* body);
 		[LinkName("b2Body_GetLocalCenter")] public static extern b2Vec2 GetLocalCenter(b2Body* body);
 
-		[LinkName("b2Body_SetLinearVelocity")] public static extern void SetLinearVelocity(b2Body* body, ref b2Vec2 v);
+		[LinkName("b2Body_SetLinearVelocity")] public static extern void SetLinearVelocity(b2Body* body, in b2Vec2 v);
 		[LinkName("b2Body_GetLinearVelocity")] public static extern b2Vec2 GetLinearVelocity(b2Body* body);
 
 		[LinkName("b2Body_SetAngularVelocity")] public static extern void SetAngularVelocity(b2Body* body, float omega);
 		[LinkName("b2Body_GetAngularVelocity")] public static extern float GetAngularVelocity(b2Body* body);
 
-		[LinkName("b2Body_ApplyForce")] public static extern void ApplyForce(b2Body* body, ref b2Vec2 force, ref b2Vec2 point, bool wake);
-		[LinkName("b2Body_ApplyForceToCenter")] public static extern void ApplyForceToCenter(b2Body* body, ref b2Vec2 force, bool wake);
+		[LinkName("b2Body_ApplyForce")] public static extern void ApplyForce(b2Body* body, in b2Vec2 force, in b2Vec2 point, bool wake);
+		[LinkName("b2Body_ApplyForceToCenter")] public static extern void ApplyForceToCenter(b2Body* body, in b2Vec2 force, bool wake);
 
 		[LinkName("b2Body_ApplyTorque")] public static extern void ApplyTorque(b2Body* body, float torque, bool wake);
 
-		[LinkName("b2Body_ApplyLinearImpulse")] public static extern void ApplyLinearImpulse(b2Body* body, ref b2Vec2 impulse, ref b2Vec2 point, bool wake);
-		[LinkName("b2Body_ApplyLinearImpulseToCenter")] public static extern void ApplyLinearImpulseToCenter(b2Body* body, ref b2Vec2 impulse, bool wake);
+		[LinkName("b2Body_ApplyLinearImpulse")] public static extern void ApplyLinearImpulse(b2Body* body, in b2Vec2 impulse, in b2Vec2 point, bool wake);
+		[LinkName("b2Body_ApplyLinearImpulseToCenter")] public static extern void ApplyLinearImpulseToCenter(b2Body* body, in b2Vec2 impulse, bool wake);
 
 		[LinkName("b2Body_ApplyAngularImpulse")] public static extern void ApplyAngularImpulse(b2Body* body, float impulse, bool wake);
 
@@ -104,17 +104,17 @@ namespace Box2D
 		[LinkName("b2Body_GetInertia")] public static extern float GetInertia(b2Body* body);
 
 		[LinkName("b2Body_GetMassData")] public static extern b2MassData GetMassData(b2Body* body);
-		[LinkName("b2Body_SetMassData")] public static extern void SetMassData(b2Body* body, ref b2MassData data);
+		[LinkName("b2Body_SetMassData")] public static extern void SetMassData(b2Body* body, in b2MassData data);
 		[LinkName("b2Body_ResetMassData")] public static extern void ResetMassData(b2Body* body);
 
-		[LinkName("b2Body_GetWorldPoint")] public static extern b2Vec2 GetWorldPoint(b2Body* body, ref b2Vec2 v);
-		[LinkName("b2Body_GetWorldVector")] public static extern b2Vec2 GetWorldVector(b2Body* body, ref b2Vec2 v);
+		[LinkName("b2Body_GetWorldPoint")] public static extern b2Vec2 GetWorldPoint(b2Body* body, in b2Vec2 v);
+		[LinkName("b2Body_GetWorldVector")] public static extern b2Vec2 GetWorldVector(b2Body* body, in b2Vec2 v);
 
-		[LinkName("b2Body_GetLocalPoint")] public static extern b2Vec2 GetLocalPoint(b2Body* body, ref b2Vec2 v);
-		[LinkName("b2Body_GetLocalVector")] public static extern b2Vec2 GetLocalVector(b2Body* body, ref b2Vec2 v);
+		[LinkName("b2Body_GetLocalPoint")] public static extern b2Vec2 GetLocalPoint(b2Body* body, in b2Vec2 v);
+		[LinkName("b2Body_GetLocalVector")] public static extern b2Vec2 GetLocalVector(b2Body* body, in b2Vec2 v);
 
-		[LinkName("b2Body_GetLinearVelocityFromWorldPoint")] public static extern b2Vec2 GetLinearVelocityFromWorldPoint(b2Body* body, ref b2Vec2 v);
-		[LinkName("b2Body_GetLinearVelocityFromLocalPoint")] public static extern b2Vec2 GetLinearVelocityFromLocalPoint(b2Body* body, ref b2Vec2 v);
+		[LinkName("b2Body_GetLinearVelocityFromWorldPoint")] public static extern b2Vec2 GetLinearVelocityFromWorldPoint(b2Body* body, in b2Vec2 v);
+		[LinkName("b2Body_GetLinearVelocityFromLocalPoint")] public static extern b2Vec2 GetLinearVelocityFromLocalPoint(b2Body* body, in b2Vec2 v);
 
 		[LinkName("b2Body_GetLinearDamping")] public static extern float GetLinearDamping(b2Body* body);
 		[LinkName("b2Body_SetLinearDamping")] public static extern void SetLinearDamping(b2Body* body, float v);

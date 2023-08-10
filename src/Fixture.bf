@@ -41,7 +41,7 @@ namespace Box2D
 		[LinkName("b2Fixture_SetSensor")] public static extern void SetSensor(b2Fixture* fixture, bool v);
 		[LinkName("b2Fixture_IsSensor")] public static extern bool IsSensor(b2Fixture* fixture);
 
-		[LinkName("b2Fixture_SetFilterData")] public static extern void SetFilterData(b2Fixture* fixture, ref b2Filter v);
+		[LinkName("b2Fixture_SetFilterData")] public static extern void SetFilterData(b2Fixture* fixture, in b2Filter v);
 		[LinkName("b2Fixture_GetFilterData")] public static extern b2Filter GetFilterData(b2Fixture* fixture);
 		[LinkName("b2Fixture_Refilter")] public static extern void Refilter(b2Fixture* fixture);
 
@@ -50,8 +50,8 @@ namespace Box2D
 		[LinkName("b2Fixture_SetUserData")] public static extern void SetUserData(b2Fixture* fixture, void* v);
 		[LinkName("b2Fixture_GetUserData")] public static extern void* GetUserData(b2Fixture* fixture);
 
-		[LinkName("b2Fixture_TestPoint")] public static extern bool TestPoint(b2Fixture* fixture, ref b2Vec2 v);
-		[LinkName("b2Fixture_ComputeDistance")] public static extern void ComputeDistance(b2Fixture* fixture, ref b2Vec2 p, float* distance, b2Vec2* normal, int32 childIndex);
+		[LinkName("b2Fixture_TestPoint")] public static extern bool TestPoint(b2Fixture* fixture, in b2Vec2 v);
+		[LinkName("b2Fixture_ComputeDistance")] public static extern void ComputeDistance(b2Fixture* fixture, in b2Vec2 p, float* distance, b2Vec2* normal, int32 childIndex);
 		[LinkName("b2Fixture_RayCast")] public static extern bool RayCast(b2Fixture* fixture, b2RayCastOutput* output, b2RayCastInput input, int32 childIndex);
 
 		[LinkName("b2Fixture_GetMassData")] public static extern void GetMassData(b2Fixture* fixture, b2MassData* v);

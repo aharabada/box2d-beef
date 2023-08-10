@@ -267,7 +267,7 @@ namespace Box2D
 		[LinkName("b2ParticleSystem_CreateParticle")] public static extern int32 CreateParticle(b2ParticleSystem* particleSystem, b2ParticleDef* def);
 		[LinkName("b2ParticleSystem_DestroyParticle")] public static extern void DestroyParticle(b2ParticleSystem* particleSystem, int32 index, bool callDestructionListener);
 		[LinkName("b2ParticleSystem_DestroyOldestParticle")] public static extern void DestroyOldestParticle(b2ParticleSystem* particleSystem, int32 index, bool callDestructionListener);
-		[LinkName("b2ParticleSystem_DestroyParticlesInShape")] public static extern void DestroyParticlesInShape(b2ParticleSystem* particleSystem, b2Shape* shape, ref b2Transform xf, bool callDestructionListener);
+		[LinkName("b2ParticleSystem_DestroyParticlesInShape")] public static extern void DestroyParticlesInShape(b2ParticleSystem* particleSystem, b2Shape* shape, in b2Transform xf, bool callDestructionListener);
 		[LinkName("b2ParticleSystem_CreateParticleGroup")] public static extern b2ParticleGroup* CreateParticleGroup(b2ParticleSystem* particleSystem, b2ParticleGroupDef* def);
 		[LinkName("b2ParticleSystem_JoinParticleGroups")] public static extern void JoinParticleGroups(b2ParticleSystem* particleSystem, b2ParticleGroup* groupA, b2ParticleGroup* groupB);
 		[LinkName("b2ParticleSystem_SplitParticleGroup")] public static extern void SplitParticleGroup(b2ParticleSystem* particleSystem, b2ParticleGroup* group);
@@ -307,12 +307,12 @@ namespace Box2D
 		[LinkName("b2ParticleSystem_GetDestructionByAge")] public static extern bool GetDestructionByAge(b2ParticleSystem* particleSystem);
 		[LinkName("b2ParticleSystem_GetExpirationTimeBuffer")] public static extern int32* GetExpirationTimeBuffer(b2ParticleSystem* particleSystem);
 		[LinkName("b2ParticleSystem_ExpirationTimeToLifetime")] public static extern float ExpirationTimeToLifetime(b2ParticleSystem* particleSystem, int32 v);
-		[LinkName("b2ParticleSystem_ParticleApplyLinearImpulse")] public static extern void ParticleApplyLinearImpulse(b2ParticleSystem* particleSystem, int32 index, ref b2Vec2 impulse);
-		[LinkName("b2ParticleSystem_ApplyLinearImpulse")] public static extern void ApplyLinearImpulse(b2ParticleSystem* particleSystem, int32 firstIndex, int32 lastIndex, ref b2Vec2 impulse);
-		[LinkName("b2ParticleSystem_ParticleApplyForce")] public static extern void ParticleApplyForce(b2ParticleSystem* particleSystem, int32 index, ref b2Vec2 force);
-		[LinkName("b2ParticleSystem_ApplyForce")] public static extern void ApplyForce(b2ParticleSystem* particleSystem, int32 firstIndex, int32 lastIndex, ref b2Vec2 force);
-		[LinkName("b2ParticleSystem_QueryAABB")] public static extern void QueryAABB(b2ParticleSystem* particleSystem, b2QueryCallback* callbacks, ref b2AABB aabb);
-		[LinkName("b2ParticleSystem_RayCast")] public static extern void RayCast(b2ParticleSystem* particleSystem, b2RayCastCallback* callbacks, ref b2Vec2 point1, ref b2Vec2 point2);
+		[LinkName("b2ParticleSystem_ParticleApplyLinearImpulse")] public static extern void ParticleApplyLinearImpulse(b2ParticleSystem* particleSystem, int32 index, in b2Vec2 impulse);
+		[LinkName("b2ParticleSystem_ApplyLinearImpulse")] public static extern void ApplyLinearImpulse(b2ParticleSystem* particleSystem, int32 firstIndex, int32 lastIndex, in b2Vec2 impulse);
+		[LinkName("b2ParticleSystem_ParticleApplyForce")] public static extern void ParticleApplyForce(b2ParticleSystem* particleSystem, int32 index, in b2Vec2 force);
+		[LinkName("b2ParticleSystem_ApplyForce")] public static extern void ApplyForce(b2ParticleSystem* particleSystem, int32 firstIndex, int32 lastIndex, in b2Vec2 force);
+		[LinkName("b2ParticleSystem_QueryAABB")] public static extern void QueryAABB(b2ParticleSystem* particleSystem, b2QueryCallback* callbacks, in b2AABB aabb);
+		[LinkName("b2ParticleSystem_RayCast")] public static extern void RayCast(b2ParticleSystem* particleSystem, b2RayCastCallback* callbacks, in b2Vec2 point1, in b2Vec2 point2);
 		[LinkName("b2ParticleSystem_ComputeAABB")] public static extern void ComputeAABB(b2ParticleSystem* particleSystem, b2AABB* aabb);
 	}
 }

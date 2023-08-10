@@ -129,32 +129,32 @@ namespace Box2D
 		/// modest motion from the original state. This does not change the
 		/// point count, impulses, etc. The radii must come from the shapes
 		/// that generated the manifold.
-		[LinkName("b2WorldManifold_Initialize")] public static extern void InitializeWorldManifold(b2WorldManifold* worldManiforld, b2Manifold* manifold, ref b2Transform xfA, float radiusA, ref b2Transform xfB, float radiusB);
+		[LinkName("b2WorldManifold_Initialize")] public static extern void InitializeWorldManifold(b2WorldManifold* worldManiforld, b2Manifold* manifold, in b2Transform xfA, float radiusA, in b2Transform xfB, float radiusB);
 
 		/// Compute the point states given two manifolds. The states pertain to the transition from manifold1
 		/// to manifold2. So state1 is either persist or remove while state2 is either add or persist.
 		[LinkName("b2Collision_GetPointStates")] public static extern void GetPointStates(b2PointState* state1, b2PointState* state2, b2Manifold* manifold1, b2Manifold* manifold2);
 
 		/// Compute the collision manifold between two circles.
-		[LinkName("b2Collision_GetPointStates")] public static extern void CollideCircles(b2Manifold* manifold, b2Shape* circleA, ref b2Transform xfA, b2Shape* circleB, ref b2Transform xfB);
+		[LinkName("b2Collision_GetPointStates")] public static extern void CollideCircles(b2Manifold* manifold, b2Shape* circleA, in b2Transform xfA, b2Shape* circleB, in b2Transform xfB);
 
 		/// Compute the collision manifold between a polygon and a circle.
-		[LinkName("b2Collision_GetPointStates")] public static extern void CollidePolygonAndCircle(b2Manifold* manifold, b2Shape* polygonA, ref b2Transform xfA, b2Shape* circleB, ref b2Transform xfB);
+		[LinkName("b2Collision_GetPointStates")] public static extern void CollidePolygonAndCircle(b2Manifold* manifold, b2Shape* polygonA, in b2Transform xfA, b2Shape* circleB, in b2Transform xfB);
 
 		/// Compute the collision manifold between two polygons.
-		[LinkName("b2Collision_GetPointStates")] public static extern void CollidePolygons(b2Manifold* manifold, b2Shape* polygonA, ref b2Transform xfA, b2Shape* polygonB, ref b2Transform xfB);
+		[LinkName("b2Collision_GetPointStates")] public static extern void CollidePolygons(b2Manifold* manifold, b2Shape* polygonA, in b2Transform xfA, b2Shape* polygonB, in b2Transform xfB);
 
 		/// Compute the collision manifold between an edge and a circle.
-		[LinkName("b2Collision_GetPointStates")] public static extern void CollideEdgeAndCircle(b2Manifold* manifold, b2Shape* polygonA, ref b2Transform xfA, b2Shape* circleB, ref b2Transform xfB);
+		[LinkName("b2Collision_GetPointStates")] public static extern void CollideEdgeAndCircle(b2Manifold* manifold, b2Shape* polygonA, in b2Transform xfA, b2Shape* circleB, in b2Transform xfB);
 
 		/// Compute the collision manifold between an edge and a polygon.
-		[LinkName("b2Collision_GetPointStates")] public static extern void CollideEdgeAndPolygon(b2Manifold* manifold, b2Shape* edgeA, ref b2Transform xfA, b2Shape* circleB, ref b2Transform xfB);
+		[LinkName("b2Collision_GetPointStates")] public static extern void CollideEdgeAndPolygon(b2Manifold* manifold, b2Shape* edgeA, in b2Transform xfA, b2Shape* circleB, in b2Transform xfB);
 
 		/// Clipping for contact manifolds.
-		[LinkName("b2Collision_GetPointStates")] public static extern int32 ClipSegmentToLine(b2ClipVertex* vOut, b2ClipVertex* vIn, ref b2Vec2 normal, float offset, int32 vertexIndexA);
+		[LinkName("b2Collision_GetPointStates")] public static extern int32 ClipSegmentToLine(b2ClipVertex* vOut, b2ClipVertex* vIn, in b2Vec2 normal, float offset, int32 vertexIndexA);
 
 		/// Determine if two generic shapes overlap.
-		[LinkName("b2Collision_GetPointStates")] public static extern bool TestOverlap(b2Shape* shapeA, int32 indexA, b2Shape* shapeB, int32 indexB, ref b2Transform xfA, ref b2Transform xfB);
+		[LinkName("b2Collision_GetPointStates")] public static extern bool TestOverlap(b2Shape* shapeA, int32 indexA, b2Shape* shapeB, int32 indexB, in b2Transform xfA, in b2Transform xfB);
 
 	}
 }

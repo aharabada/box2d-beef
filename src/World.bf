@@ -55,13 +55,13 @@ namespace Box2D
 	[CRepr]
 	struct b2Draw
 	{
-		public typealias DrawPolygonCallback = function void(b2Vec2* vertices, int32 vertexCount, ref b2Color color, void* userData);
-		public typealias DrawSolidPolygonCallback = function void(b2Vec2* vertices, int32 vertexCount, ref b2Color color, void* userData);
-		public typealias DrawCircleCallback = function void(ref b2Vec2 center, float radius, ref b2Color color, void* userData);
-		public typealias DrawSolidCircleCallback = function void(ref b2Vec2 center, float radius, ref b2Vec2 axis, ref b2Color color, void* userData);
-		public typealias DrawSegmentCallback = function void(ref b2Vec2 p1, ref b2Vec2 p2, ref b2Color color, void* userData);
-		public typealias DrawTransformCallback = function void(ref b2Transform xf, void* userData);
-		public typealias DrawPointCallback = function void(ref b2Vec2 p, float size, ref b2Color color, void* userData);
+		public typealias DrawPolygonCallback = function void(b2Vec2* vertices, int32 vertexCount, in b2Color color, void* userData);
+		public typealias DrawSolidPolygonCallback = function void(b2Vec2* vertices, int32 vertexCount, in b2Color color, void* userData);
+		public typealias DrawCircleCallback = function void(in b2Vec2 center, float radius, in b2Color color, void* userData);
+		public typealias DrawSolidCircleCallback = function void(in b2Vec2 center, float radius, in b2Vec2 axis, in b2Color color, void* userData);
+		public typealias DrawSegmentCallback = function void(in b2Vec2 p1, in b2Vec2 p2, in b2Color color, void* userData);
+		public typealias DrawTransformCallback = function void(in b2Transform xf, void* userData);
+		public typealias DrawPointCallback = function void(in b2Vec2 p, float size, in b2Color color, void* userData);
 
 		public DrawPolygonCallback drawPolygonCallback;
 		public DrawSolidPolygonCallback drawSolidPolygonCallback;
@@ -90,8 +90,8 @@ namespace Box2D
 	[CRepr]
 	struct b2RayCastCallback
 	{
-		public typealias ReportFixtureCallback = function float(b2Fixture* fixture, ref b2Vec2 point, ref b2Vec2 normal, float fraction, void* userData);
-		public typealias ReportParticleCallback = function float(b2ParticleSystem* particleSystem, int32 index, ref b2Vec2 point, ref b2Vec2 normal, float fraction, void* userData);
+		public typealias ReportFixtureCallback = function float(b2Fixture* fixture, in b2Vec2 point, in b2Vec2 normal, float fraction, void* userData);
+		public typealias ReportParticleCallback = function float(b2ParticleSystem* particleSystem, int32 index, in b2Vec2 point, in b2Vec2 normal, float fraction, void* userData);
 		public typealias ShouldQueryParticleSystemCallback = function bool(b2ParticleSystem* particleSystem, void* userData);
 
 		public ReportFixtureCallback reportFixtureCallback;
@@ -102,7 +102,7 @@ namespace Box2D
 
 	static class World
 	{
-		[LinkName("b2World_Create")] public static extern b2World* Create(ref b2Vec2 gravity);
+		[LinkName("b2World_Create")] public static extern b2World* Create(in b2Vec2 gravity);
 		[LinkName("b2World_Delete")] public static extern void Delete(b2World* world);
 
 		[LinkName("b2World_SetDestructionListenerCallbacks")] public static extern void SetDestructionListenerCallbacks(b2World* world, b2DestructionListener* callbacks);
@@ -130,8 +130,8 @@ namespace Box2D
 
 		[LinkName("b2World_DebugDraw")] public static extern void DebugDraw(b2World* world);
 
-		[LinkName("b2World_QueryAABB")] public static extern void QueryAABB(b2World* world, b2QueryCallback* callbacks, ref b2AABB aabb);
-		[LinkName("b2World_RayCast")] public static extern void RayCast(b2World* world, b2RayCastCallback* callbacks, ref b2Vec2 point1, ref b2Vec2 point2);
+		[LinkName("b2World_QueryAABB")] public static extern void QueryAABB(b2World* world, b2QueryCallback* callbacks, in b2AABB aabb);
+		[LinkName("b2World_RayCast")] public static extern void RayCast(b2World* world, b2RayCastCallback* callbacks, in b2Vec2 point1, in b2Vec2 point2);
 
 		[LinkName("b2World_GetBodyList")] public static extern b2Body* GetBodyList(b2World* world);
 		[LinkName("b2World_GetJointList")] public static extern b2Joint* GetJointList(b2World* world);
@@ -159,7 +159,7 @@ namespace Box2D
 		[LinkName("b2World_GetTreeBalance")] public static extern int32 GetTreeBalance(b2World* world);
 		[LinkName("b2World_GetTreeQuality")] public static extern float GetTreeQuality(b2World* world);
 
-		[LinkName("b2World_SetGravity")] public static extern void SetGravity(b2World* world, ref b2Vec2 gravity);
+		[LinkName("b2World_SetGravity")] public static extern void SetGravity(b2World* world, in b2Vec2 gravity);
 		[LinkName("b2World_GetGravity")] public static extern b2Vec2 GetGravity(b2World* world);
 
 		[LinkName("b2World_IsLocked")] public static extern bool IsLocked(b2World* world);
@@ -167,6 +167,6 @@ namespace Box2D
 		[LinkName("b2World_SetAutoClearForces")] public static extern void SetAutoClearForces(b2World* world, bool flag);
 		[LinkName("b2World_GetAutoClearForces")] public static extern bool GetAutoClearForces(b2World* world);
 
-		[LinkName("b2World_ShiftOrigin")] public static extern void ShiftOrigin(b2World* world, ref b2Vec2 newOrigin);
+		[LinkName("b2World_ShiftOrigin")] public static extern void ShiftOrigin(b2World* world, in b2Vec2 newOrigin);
 	}
 }

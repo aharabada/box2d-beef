@@ -51,12 +51,12 @@ namespace Box2D
 
 		/// Initialize the bodies, anchors, and rest length using world space anchors.
 		/// The minimum and maximum lengths are set to the rest length.
-		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, ref b2Vec2 anchorA, ref b2Vec2 anchorB) mut
+		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, in b2Vec2 anchorA, in b2Vec2 anchorB) mut
 		{
 			bodyA = _bodyA;
 			bodyB = _bodyB;
-			localAnchorA = Body.GetLocalPoint(bodyA, ref anchorA);
-			localAnchorB = Body.GetLocalPoint(bodyA, ref anchorB);
+			localAnchorA = Body.GetLocalPoint(bodyA, anchorA);
+			localAnchorB = Body.GetLocalPoint(bodyA, anchorB);
 			b2Vec2 d = anchorB - anchorA;
 			length = Math.Max(d.Length, Constants.b2_linearSlop);
 			minLength = length;
@@ -96,12 +96,12 @@ namespace Box2D
 
 		/// Initialize the bodies, anchors, axis, and reference angle using the world
 		/// anchor and world axis.
-		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, ref b2Vec2 anchor) mut
+		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, in b2Vec2 anchor) mut
 		{
 			bodyA = _bodyA;
 			bodyB = _bodyB;
-			localAnchorA = Body.GetLocalPoint(bodyA, ref anchor);
-			localAnchorB = Body.GetLocalPoint(bodyB, ref anchor);
+			localAnchorA = Body.GetLocalPoint(bodyA, anchor);
+			localAnchorB = Body.GetLocalPoint(bodyB, anchor);
 		}
 
 		/// The local anchor point relative to bodyA's origin.
@@ -153,7 +153,7 @@ namespace Box2D
 			bodyA = _bodyA;
 			bodyB = _bodyB;
 			b2Vec2 xB = Body.GetPosition(bodyB);
-			linearOffset = Body.GetLocalPoint(bodyA, ref xB);
+			linearOffset = Body.GetLocalPoint(bodyA, xB);
 			float angleA = Body.GetAngle(bodyA);
 			float angleB = Body.GetAngle(bodyB);
 			angularOffset = angleB - angleA;
@@ -224,13 +224,13 @@ namespace Box2D
 
 		/// Initialize the bodies, anchors, axis, and reference angle using the world
 		/// anchor and unit world axis.
-		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, ref b2Vec2 anchor, ref b2Vec2 axis) mut
+		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, in b2Vec2 anchor, in b2Vec2 axis) mut
 		{
 			bodyA = _bodyA;
 			bodyB = _bodyB;
-			localAnchorA = Body.GetLocalPoint(bodyA, ref anchor);
-			localAnchorB = Body.GetLocalPoint(bodyB, ref anchor);
-			localAxisA = Body.GetLocalVector(bodyA, ref axis);
+			localAnchorA = Body.GetLocalPoint(bodyA, anchor);
+			localAnchorB = Body.GetLocalPoint(bodyB, anchor);
+			localAxisA = Body.GetLocalVector(bodyA, axis);
 			referenceAngle = Body.GetAngle(bodyB) - Body.GetAngle(bodyA);
 		}
 
@@ -279,14 +279,14 @@ namespace Box2D
 		}
 
 		/// Initialize the bodies, anchors, lengths, max lengths, and ratio using the world anchors.
-		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, ref b2Vec2 _groundAnchorA, ref b2Vec2 _groundAnchorB, ref b2Vec2 anchorA, ref b2Vec2 anchorB, float _ratio) mut
+		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, in b2Vec2 _groundAnchorA, in b2Vec2 _groundAnchorB, in b2Vec2 anchorA, in b2Vec2 anchorB, float _ratio) mut
 		{
 			bodyA = _bodyA;
 			bodyB = _bodyB;
 			groundAnchorA = _groundAnchorA;
 			groundAnchorB = _groundAnchorB;
-			localAnchorA = Body.GetLocalPoint(bodyA, ref anchorA);
-			localAnchorB = Body.GetLocalPoint(bodyB, ref anchorB);
+			localAnchorA = Body.GetLocalPoint(bodyA, anchorA);
+			localAnchorB = Body.GetLocalPoint(bodyB, anchorB);
 			var dA = anchorA - _groundAnchorA;
 			lengthA = dA.Length;
 			var dB = anchorB - _groundAnchorB;
@@ -336,12 +336,12 @@ namespace Box2D
 
 		/// Initialize the bodies, anchors, and reference angle using a world
 		/// anchor point.
-		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, ref b2Vec2 anchor) mut
+		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, in b2Vec2 anchor) mut
 		{
 			bodyA = _bodyA;
 			bodyB = _bodyB;
-			localAnchorA = Body.GetLocalPoint(bodyA, ref anchor);
-			localAnchorB = Body.GetLocalPoint(bodyB, ref anchor);
+			localAnchorA = Body.GetLocalPoint(bodyA, anchor);
+			localAnchorB = Body.GetLocalPoint(bodyB, anchor);
 			referenceAngle = Body.GetAngle(bodyB) - Body.GetAngle(bodyB);
 		}
 
@@ -389,12 +389,12 @@ namespace Box2D
 		/// @param bodyA the first body connected by this joint
 		/// @param bodyB the second body connected by this joint
 		/// @param anchor the point of connection in world coordinates
-		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, ref b2Vec2 anchor) mut
+		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, in b2Vec2 anchor) mut
 		{
 			bodyA = _bodyA;
 			bodyB = _bodyB;
-			localAnchorA = Body.GetLocalPoint(bodyA, ref anchor);
-			localAnchorB = Body.GetLocalPoint(bodyB, ref anchor);
+			localAnchorA = Body.GetLocalPoint(bodyA, anchor);
+			localAnchorB = Body.GetLocalPoint(bodyB, anchor);
 			referenceAngle = Body.GetAngle(bodyB) - Body.GetAngle(bodyB);
 		}
 
@@ -431,13 +431,13 @@ namespace Box2D
 
 		/// Initialize the bodies, anchors, axis, and reference angle using the world
 		/// anchor and world axis.
-		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, ref b2Vec2 anchor, ref b2Vec2 axis) mut
+		public void Initialize(b2Body* _bodyA, b2Body* _bodyB, in b2Vec2 anchor, in b2Vec2 axis) mut
 		{
 			bodyA = _bodyA;
 			bodyB = _bodyB;
-			localAnchorA = Body.GetLocalPoint(bodyA, ref anchor);
-			localAnchorB = Body.GetLocalPoint(bodyB, ref anchor);
-			localAxisA = Body.GetLocalVector(bodyA, ref axis);
+			localAnchorA = Body.GetLocalPoint(bodyA, anchor);
+			localAnchorB = Body.GetLocalPoint(bodyB, anchor);
+			localAxisA = Body.GetLocalVector(bodyA, axis);
 		}
 
 		/// The local anchor point relative to bodyA's origin.
@@ -584,7 +584,7 @@ namespace Box2D
 		/// use the mouse joint, look at the testbed.
 		[LinkName("b2JointMouseJoint_GetReactionForce")] public static extern b2Vec2 MouseJointGetReactionForce(b2Joint* joint, float v);
 		[LinkName("b2JointMouseJoint_GetReactionTorque")] public static extern float MouseJointGetReactionTorque(b2Joint* joint, float v);
-		[LinkName("b2JointMouseJoint_SetTarget")] public static extern void MouseJointSetTarget(b2Joint* joint, ref b2Vec2 v);
+		[LinkName("b2JointMouseJoint_SetTarget")] public static extern void MouseJointSetTarget(b2Joint* joint, in b2Vec2 v);
 		[LinkName("b2JointMouseJoint_GetTarget")] public static extern b2Vec2 MouseJointGetTarget(b2Joint* joint);
 		[LinkName("b2JointMouseJoint_SetMaxForce")] public static extern void MouseJointSetMaxForce(b2Joint* joint, float v);
 		[LinkName("b2JointMouseJoint_GetMaxForce")] public static extern float MouseJointGetMaxForce(b2Joint* joint);
@@ -667,7 +667,7 @@ namespace Box2D
 		/// of a dynamic body with respect to the ground.
 		[LinkName("b2JointMotorJoint_GetReactionForce")] public static extern b2Vec2 MotorJointGetReactionForce(b2Joint* joint, float v);
 		[LinkName("b2JointMotorJoint_GetReactionTorque")] public static extern float MotorJointGetReactionTorque(b2Joint* joint, float v);
-		[LinkName("b2JointMotorJoint_SetLinearOffset")] public static extern void MotorJointSetLinearOffset(b2Joint* joint, ref b2Vec2 v);
+		[LinkName("b2JointMotorJoint_SetLinearOffset")] public static extern void MotorJointSetLinearOffset(b2Joint* joint, in b2Vec2 v);
 		[LinkName("b2JointMotorJoint_GetLinearOffset")] public static extern b2Vec2 MotorJointGetLinearOffset(b2Joint* joint);
 		[LinkName("b2JointMotorJoint_SetAngularOffset")] public static extern void MotorJointSetAngularOffset(b2Joint* joint, float v);
 		[LinkName("b2JointMotorJoint_GetAngularOffset")] public static extern float MotorJointGetAngularOffset(b2Joint* joint);
