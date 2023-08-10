@@ -211,8 +211,8 @@ B2WORLD(void, SetContactFilter, b2ContactFilterWrapper::Callbacks* callbacks) {
     world->SetContactFilter(new b2ContactFilterWrapper(*callbacks));
 }
 
-B2WORLD(void, SetContactListener, b2ContactFilterWrapper::Callbacks* callbacks) {
-    world->SetContactFilter(new b2ContactFilterWrapper(*callbacks));
+B2WORLD(void, SetContactListener, b2ContactListenerWrapper::Callbacks* callbacks) {
+    world->SetContactListener(new b2ContactListenerWrapper(*callbacks));
 }
 
 B2WORLD(void, SetDebugDraw, b2DrawWrapper::Callbacks* callbacks) {
