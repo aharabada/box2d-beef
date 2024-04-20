@@ -2,7 +2,7 @@ using System;
 
 namespace Box2D
 {
-	enum b2BodyType
+	enum b2BodyType : uint32
 	{
 		b2_staticBody = 0,
 		b2_kinematicBody,
